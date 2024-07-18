@@ -81,7 +81,6 @@ export const MultiPopupArea = (props) => {
   return useMemo(() => {
     return (
       <div className='MultiPopupArea' ref={ref}>
-        MultiPoup
         {Object.keys(EventPopup.popupList.refs).map((id) => {
           return <div key={id}>{EventPopup.popupList.refs[id]?.component}</div>
         })}
