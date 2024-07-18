@@ -52,6 +52,7 @@
     "dist"
   ],
   "dependencies": {
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "uuid": "^10.0.0"
   }
 }
