@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import CommonPopup from './CommonPopup'
 
 export const MultiPopupArea = (props) => {
-  const { config } = props
+  const { config, option } = props
   const ref = useRef(null)
   const [etag, setEtag] = useState(uuidv4())
   useEffect(() => {
@@ -47,6 +47,7 @@ export const MultiPopupArea = (props) => {
               <CommonPopup
                 type={params.type}
                 payload={params.payload}
+                defaultOption={option}
                 option={params.option}
                 closeAll={handleCloseAllPopup}
                 close={handleClose}
@@ -63,6 +64,7 @@ export const MultiPopupArea = (props) => {
               <CommonPopup
                 type={params.type}
                 payload={params.payload}
+                defaultOption={option}
                 option={params.option}
                 closeAll={handleCloseAllPopup}
                 close={handleClose}
@@ -78,9 +80,13 @@ export const MultiPopupArea = (props) => {
       EventRegister.off(reloadEvent)
     }
   }, [])
+  let containerClass = ''
+  if (option.defaultContainerClass) {
+    containerClass = option.defaultContainerClass
+  }
   return useMemo(() => {
     return (
-      <div className='MultiPopupArea' ref={ref}>
+      <div className={`MultiPopupArea ${containerClass}`} ref={ref}>
         {Object.keys(EventPopup.popupList.refs).map((id) => {
           return <div key={id}>{EventPopup.popupList.refs[id]?.component}</div>
         })}
