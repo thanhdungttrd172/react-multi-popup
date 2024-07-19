@@ -7,22 +7,31 @@
 ## Install
 
 ```bash
-npm install --save react-multi-popup
+npm install --save @thanhdungttrd172/react-multi-popup
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import { ExampleComponent, MultiPopupArea, useMultiPopup } from '@thanhdungttrd172/react-multi-popup'
+import '@thanhdungttrd172/react-multi-popup/dist/index.css'
+import TestPopup from './TestPopup'
 
-import MyComponent from 'react-multi-popup'
-import 'react-multi-popup/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
+const App = () => {
+  const { open: openPopup } = useMultiPopup()
+  const popupConfig = {
+    "TEST": TestPopup
   }
+  const handleOpenPopup = () => {
+    openPopup("TEST",{data: "ok"});
+  }
+  return <div>
+    <MultiPopupArea config={popupConfig} />
+    <ExampleComponent text="Create React Library Example 😄" />
+    <button onClick={handleOpenPopup}>Open Popup</button>
+  </div>
 }
+
 ```
 
 ## License
