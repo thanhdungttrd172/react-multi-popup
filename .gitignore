@@ -1,4 +1,6 @@
-example
+example/node_modules
+example/package-lock.json
+example/yarn.lock
 node_modules
 dist
 package-lock.json
